@@ -8,7 +8,7 @@
 import os
 import requests
 from dotenv import load_dotenv
-load_dotenv()
+from pathlib import Path
 from bip44 import Wallet
 from web3 import Account
 from web3 import middleware
@@ -19,8 +19,14 @@ from web3.gas_strategies.time_based import medium_gas_price_strategy
 
 def generate_account():
     """Create a digital wallet and Ethereum account from a mnemonic seed phrase."""
+    load_dotenv()
+    env_path = Path('SAMPLE.env')
+    load_dotenv(dotenv_path=env_path)
+
     # Fetch mnemonic from environment variable.
     mnemonic = os.getenv("MNEMONIC")
+    print(mnemonic)
+    
 
     # Create Wallet Object
     wallet = Wallet(mnemonic)
@@ -71,3 +77,6 @@ def send_transaction(w3, account, to, wage):
 
     # Send the signed transactions
     return w3.eth.sendRawTransaction(signed_tx.rawTransaction)
+    
+### Addd this to check if the method is behving as expected within the class    
+generate_account()
