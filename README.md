@@ -13,3 +13,5 @@ Application to enable customers to pay Fintech proffesionals whom they hire usin
 --
 Please see the images attched to see successful test transaction
 
+----
+To run use - streamlit run fintech_finder.py 
